@@ -1,40 +1,69 @@
 import RestInfo from "./RestInfo";
-import {useState,useEffect} from "react";
+import { useState } from "react";
 
-export default function MenuCard({ data }) {
-    const [isOpen,setIsOpen] = useState(true);
-    if (!data?.itemCards) return null;
+export default function MenuCard({ data, foodSelected }) {
+  const [isOpen, setIsOpen] = useState(true);
 
-    if(!isOpen){
-        return (
-            <div className="w-full ">
-            <div className="flex justify-between w-full">
-            <p className="text-3xl font-bold mb-4">{data.title} </p>
-            <button onClick={()=>setIsOpen(!isOpen)} className={`text-3xl mr-20 transition-transform duration-200 ${isOpen?"rotate-180":"rotate-0"}`}>⌄</button>
+  if (!data?.itemCards) return null;
 
-            </div>
-            <div className="h-5 bg-gray-300 mmt-2 mb-2" ></div>
-            </div>
-            
-        )
-    }
-
+  if (!isOpen) {
     return (
-        <div className="w-full ">
-            <div className="flex justify-between w-full">
-            <p className="text-3xl font-bold mb-4">{data.title} </p>
-            <button onClick={()=>setIsOpen(!isOpen)} className={`text-3xl mr-20 transition-transform duration-200 ${isOpen?"rotate-180":"rotate-0"}`}>⌄</button>
- 
-            </div>
-            <div >
-                {
-                    data.itemCards.map((items) => (
-                        <RestInfo key={items?.card?.info?.id} restData={items?.card?.info}/>
-                    ))
-                }
-            </div>
-            <div className="h-5 bg-gray-300 mt-2 mb-2" ></div>
-
+      <div className="w-full">
+        <div className="flex justify-between items-center w-full">
+          <p className="text-xl sm:text-3xl font-bold mb-4">
+            {data.title}
+          </p>
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className={`text-2xl sm:text-3xl transition-transform duration-200 ${
+              isOpen ? "rotate-180" : "rotate-0"
+            }`}
+          >
+            ⌄
+          </button>
         </div>
+        <div className="h-5 bg-gray-300 mt-2 mb-2"></div>
+      </div>
     );
+  }
+
+  const filteredItems =
+    foodSelected === "veg"
+      ? data.itemCards.filter(
+          (food) => "isVeg" in food?.card?.info
+        )
+      : foodSelected === "nonveg"
+      ? data.itemCards.filter(
+          (food) => !("isVeg" in food?.card?.info)
+        )
+      : data.itemCards;
+
+  return (
+    <div className="w-full">
+      <div className="flex justify-between items-center w-full">
+        <p className="text-xl sm:text-3xl font-bold mb-4">
+          {data.title}
+        </p>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className={`text-2xl sm:text-3xl transition-transform duration-200 ${
+            isOpen ? "rotate-180" : "rotate-0"
+          }`}
+        >
+          ⌄
+        </button>
+      </div>
+
+      <div>
+        {filteredItems.map((items) => (
+          <RestInfo
+            key={items?.card?.info?.id}
+            restData={items?.card?.info}
+          />
+        ))}
+      </div>
+
+      <div className="h-5 bg-gray-300 mt-2 mb-2"></div>
+    </div>
+  );
 }

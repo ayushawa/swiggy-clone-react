@@ -10,12 +10,12 @@ export default function CityWithFood() {
     : CityFoodData.slice(0, 11);
 
   return (
-    <div className="mt-20 mx-40">
+    <div className="mt-20 mx-4 sm:mx-10 lg:mx-40">
       <h2 className="text-2xl font-bold mb-8">
         Cities with food delivery
       </h2>
 
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {visibleCities.map((food) => (
           <CityFoodCard key={food.link} food={food} />
         ))}
@@ -23,7 +23,7 @@ export default function CityWithFood() {
         {!showAll && (
           <button
             onClick={() => setShowAll(true)}
-            className="h-[72px] rounded-xl border border-gray-300 text-orange-500 font-semibold flex items-center justify-center hover:shadow-md transition"
+            className="min-h-[56px] sm:h-[72px] rounded-xl border border-gray-300 text-orange-500 font-semibold flex items-center justify-center hover:shadow-md transition"
           >
             Show More ↓
           </button>
@@ -32,4 +32,5 @@ export default function CityWithFood() {
     </div>
   );
 }
+
 
