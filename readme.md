@@ -1,69 +1,15 @@
-how to install tailwind css -->
+Swiggy Clone is a frontend-only project built using React.
+This project was created to practice UI building, routing, and state management.
+It includes restaurant listing, menu pages, veg/non-veg filter, and cart features.
+Redux Toolkit is used for managing global cart state.
+Routing is handled using React Router.
+Tailwind CSS is used for styling the UI.
 
-step 1 //
-npm init -y
-npm install parcel 
-src
-src/index.html 
+Live link: https://swiggy-clone-ayush.netlify.app/
 
-step 2 //
-create a file name .postcssrc in root folder
-and paste 
-{
-    "plugins":{
-        "@tailwindcss/postcss":{}
-    }
-}
+This project uses a public CORS proxy server to fetch Swiggy API data.
+Proxy link: https://cors-anywhere.herokuapp.com/
 
-
-step 3 // 
-create index.css in src and paste below code :
-@import "tailwindcss";
-
-
-step 4 paste below code in index.html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <link href="./index.css" type="text/css" rel="stylesheet">
-</head>
-<body>
-    <h1 class="text-3x1 font-bold underline">Hello hunt </h1>
-</body>
-</html>
-
-
-and run below command in terminal 
-npx parcel src/index.html
-
-
-///*****************************************************************************************
-
-
-whenever dtry to download any depedency first check it version in package.json
-
-
-************************ to get access to fatch data from any website
-https://cors-anywhere.herokuapp.com/
-
-
----------------------------- To CREATE ROUTES DOWNLOAD REACT ROUTES
-FIRST INSTALL react-router by npm install react-router-dom
-https://reactrouter.com/start/data/installation   GO TO THIS LINK AND CHECK IMPORT FOR BROWSER ROUTER
-
-import { createBrowserRouter } from "react-routerdom"; 
---> import this one for creating routes  
-
-"react-router-dom" you will use this to route and link
-
-
-https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=29.9654&lng=77.5428&restaurantId=1066525&submitAction=ENTER
-
-https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=29.9654&lng=77.5428&restaurantId=383490&submitAction=ENTER
-
-
+The proxy may stop working or require permission again.
+This project is for learning purposes only.
 
